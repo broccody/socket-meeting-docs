@@ -19,9 +19,9 @@ start video group
 ```javascript
 const message = {
     id: "startMeeting",
-    roomId: "meeting-01",
-    roomName: "Regular Meeting",
-    project: "DemoHospital>Depart1>Ward1"
+    roomId: "room-id",   // (optional) for custom room id
+    roomName: "room-name",   // (optional) for custom room name
+    project: "room-project"
 }
 socket.emit("meeting", message)
 ```
@@ -31,8 +31,8 @@ join meeting room
 ```javascript
 const message = {
     id: "joinRoom",
-    roomId: "meeting-01",
-    project: "DemoHospital>Depart1>Ward1"
+    roomId: "room-id",
+    project: "room-project"
 }
 socket.emit("meeting", message)
 ```
@@ -42,8 +42,8 @@ leave meeting room
 ```javascript
 const message = {
     id: "leaveRoom",
-    roomId: "meeting-01",
-    project: "DemoHospital>Depart1>Ward1"
+    roomId: "room-id",
+    project: "room-project"
 }
 socket.emit("meeting", message)
 ```
@@ -53,9 +53,21 @@ accept incoming call
 ```javascript
 const message = {
     id: "acceptCall",
-    to: "caller.id"
-    roomId: "meeting-01",
-    project: "DemoHospital>Depart1>Ward1"
+    to: "from-socket-id"
+    roomId: "room-id",
+    project: "room-project"
+}
+socket.emit("meeting", message)
+```
+
+##### 6. rejectCall
+reject incoming call
+```javascript
+const message = {
+    id: "rejectCall",
+    to: "from-socket-id"
+    roomId: "room-id",
+    project: "room-project"
 }
 socket.emit("meeting", message)
 ```
