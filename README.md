@@ -7,26 +7,40 @@ start video call (1-1) and wait util callee accept calling
 ```javascript
 const message = {
     id: "startCall",
-    robotId: "1",   // callee robot id
-    videoId: "0",   // callee video id
-    project: "DemoHospital>Depart1>Ward1"   // callee project
+    project: "project"
+    robotId: "1",   // target robot id
+    videoId: "0",   // (optional) default '0'
+    roomId: "room-id"   // (optional) for custom room id
 }
 socket.emit("meeting", message)
 ```
 
-##### 2. startMeeting
-start video group
+##### 2. startGroupCall
+start video group call and wait util someone join room
+
+```javascript
+const message = {
+    id: "startGroupCall",
+    project: "room-project"
+    roomId: "room-id",   // (optional) for custom room id
+    roomName: "room-name",   // (optional) for custom room name
+}
+socket.emit("meeting", message)
+```
+
+##### 3. startMeeting
+start meeting (no waiting)
 ```javascript
 const message = {
     id: "startMeeting",
+    project: "room-project"
     roomId: "room-id",   // (optional) for custom room id
     roomName: "room-name",   // (optional) for custom room name
-    project: "room-project"
 }
 socket.emit("meeting", message)
 ```
 
-##### 3. joinRoom
+##### 4. joinRoom
 join meeting room
 ```javascript
 const message = {
@@ -37,7 +51,7 @@ const message = {
 socket.emit("meeting", message)
 ```
 
-##### 4. leaveRoom
+##### 5. leaveRoom
 leave meeting room
 ```javascript
 const message = {
@@ -48,7 +62,7 @@ const message = {
 socket.emit("meeting", message)
 ```
 
-##### 5. acceptCall
+##### 6. acceptCall
 accept incoming call
 ```javascript
 const message = {
@@ -60,7 +74,7 @@ const message = {
 socket.emit("meeting", message)
 ```
 
-##### 6. rejectCall
+##### 7. rejectCall
 reject incoming call
 ```javascript
 const message = {
@@ -72,7 +86,7 @@ const message = {
 socket.emit("meeting", message)
 ```
 
-##### 7. invite
+##### 8. invite
 invite other to join room
 ```javascript
 const message = {
@@ -81,19 +95,6 @@ const message = {
     videoId: "receiver-video-id"
     roomId: "room-id",
     project: "room-project"
-}
-socket.emit("meeting", message)
-```
-
-##### 1. startCall
-start video call (1-1) and wait util callee accept calling
-
-```javascript
-const message = {
-    id: "startCall",
-    robotId: "1",   // callee robot id
-    videoId: "0",   // callee video id
-    project: "DemoHospital>Depart1>Ward1"   // callee project
 }
 socket.emit("meeting", message)
 ```
@@ -198,23 +199,6 @@ socket.on("meeting", msg => {
 })
 ```
 
-##### closeRoom
-event on room close
-```javascript
-socket.on("meeting", msg => {
-    console.log(msg)
-/*  msg on closeRoom
-    {
-        id: "closeRoom",
-        roomId: "meeting1"
-        roomName: "meeting-01",
-        roomType: "meeting"
-        project: "DemoHospital>Depart1>Ward1"
-    }
-/*
-})
-```
-
 ##### userAcceptCall
 event on user (callee) accept calling
 ```javascript
@@ -294,6 +278,23 @@ socket.on("meeting", msg => {
         roomName: "room-name",
         roomType: "room-type",
         project: "room-project",
+    }
+/*
+})
+```
+
+##### closeRoom
+event on room close
+```javascript
+socket.on("meeting", msg => {
+    console.log(msg)
+/*  msg on closeRoom
+    {
+        id: "closeRoom",
+        roomId: "meeting1"
+        roomName: "meeting-01",
+        roomType: "meeting"
+        project: "DemoHospital>Depart1>Ward1"
     }
 /*
 })
