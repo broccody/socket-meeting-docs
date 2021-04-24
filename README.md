@@ -207,7 +207,7 @@ socket.on("meeting", msg => {
 /*  msg on userAcceptCall
     {
         id: 'userAcceptCall',
-        from: "sender-socker-id",
+        fromSocket: "sender-socker-id",
         fromName: "sender-name",
         fromRobotId: "sender-robot-id",
         fromUsername: "sender-username",
@@ -228,7 +228,7 @@ socket.on("meeting", msg => {
 /*  msg on userRejectCall
     {
         id: 'userRejectCall',
-        from: "sender-socker-id",
+        fromSocket: "sender-socker-id",
         fromName: "sender-name",
         fromRobotId: "sender-robot-id",
         fromUsername: "sender-username",
@@ -249,7 +249,7 @@ socket.on("meeting", msg => {
 /*  msg on incomingCall
     {
         id: 'incomingCall',
-        from: "sender-socker-id",
+        fromSocket: "sender-socker-id",
         fromName: "sender-name",
         fromRobotId: "sender-robot-id",
         fromUsername: "sender-username",
@@ -270,7 +270,7 @@ socket.on("meeting", msg => {
 /*  msg on invite
     {
         id: 'invite',
-        from: "sender-socker-id",
+        fromSocket: "sender-socker-id",
         fromName: "sender-name",
         fromRobotId: "sender-robot-id",
         fromUsername: "sender-username",
