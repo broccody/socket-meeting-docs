@@ -67,7 +67,6 @@ accept incoming call
 ```javascript
 const message = {
     id: "acceptCall",
-    to: "from-socket-id"
     roomId: "room-id",
     project: "room-project"
 }
@@ -79,7 +78,6 @@ reject incoming call
 ```javascript
 const message = {
     id: "rejectCall",
-    to: "from-socket-id"
     roomId: "room-id",
     project: "room-project"
 }
@@ -92,7 +90,7 @@ invite other to join room
 const message = {
     id: "invite",
     robotId: "receiver-robot-id",
-    videoId: "receiver-video-id"
+    videoId: "receiver-video-id"    // (optional)
     roomId: "room-id",
     project: "room-project"
 }
@@ -109,10 +107,10 @@ socket.on("meeting", msg => {
 /*  msg on joinRoomSuccess
     {
         id: "joinRoomSuccess",
-        roomId: "caller.id"
-        roomName: "meeting-01",
-        roomType: "meeting"
-        project: "DemoHospital>Depart1>Ward1",
+        roomId: "room-id"
+        roomName: "room-name",
+        roomType: "room-type"
+        project: "room-project",
         members: [
             {
                 id: "user-socket-id",
@@ -159,10 +157,10 @@ socket.on("meeting", msg => {
 /*  msg on userJoinRoom
     {
         id: "userJoinRoom",
-        roomId: "caller.id"
-        roomName: "meeting-01",
-        roomType: "meeting"
-        project: "DemoHospital>Depart1>Ward1",
+        roomId: "room-id"
+        roomName: "room-name",
+        roomType: "room-type"
+        project: "room-project",
         user: {
             id: "user-socket-id",
             robotId: "2",
