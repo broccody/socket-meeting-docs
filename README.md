@@ -85,11 +85,22 @@ socket.emit("meeting", message)
 ```
 
 ##### 8. cancelCall
-cancel call (from start call)
+cancel (1-1) calling (from caller)
 ```javascript
 const message = {
     id: "cancelCall",
     robotId: "callee-robot-id"
+    roomId: "room-id",
+    project: "room-project"
+}
+socket.emit("meeting", message)
+```
+
+##### 8. cancelGroupCall
+cancel group calling (from caller)
+```javascript
+const message = {
+    id: "cancelGroupCall",
     roomId: "room-id",
     project: "room-project"
 }
