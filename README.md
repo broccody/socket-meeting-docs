@@ -84,7 +84,19 @@ const message = {
 socket.emit("meeting", message)
 ```
 
-##### 8. invite
+##### 8. cancelCall
+cancel call (from start call)
+```javascript
+const message = {
+    id: "cancelCall",
+    robotId: "callee-robot-id"
+    roomId: "room-id",
+    project: "room-project"
+}
+socket.emit("meeting", message)
+```
+
+##### 9. invite
 invite other to join room
 ```javascript
 const message = {
@@ -226,6 +238,27 @@ socket.on("meeting", msg => {
 /*  msg on userRejectCall
     {
         id: 'userRejectCall',
+        fromSocket: "sender-socker-id",
+        fromName: "sender-name",
+        fromRobotId: "sender-robot-id",
+        fromUsername: "sender-username",
+        roomId: "room-id",
+        roomName: "room-name",
+        roomType: "room-type",
+        project: "room-project",
+    }
+/*
+})
+```
+
+##### userCancelCall
+event on user (caller) cancel calling
+```javascript
+socket.on("meeting", msg => {
+    console.log(msg)
+/*  msg on userCancelCall
+    {
+        id: 'userCancelCall',
         fromSocket: "sender-socker-id",
         fromName: "sender-name",
         fromRobotId: "sender-robot-id",
