@@ -7,7 +7,7 @@ start video call (1-1) and wait util callee accept calling
 ```javascript
 const message = {
     id: "startCall",
-    project: "project"
+    project: "project",
     robotId: "1",   // target robot id
     videoId: "0",   // (optional) default '0'
     roomId: "room-id"   // (optional) for custom room id
@@ -21,7 +21,7 @@ start video group call and wait util someone join room
 ```javascript
 const message = {
     id: "startGroupCall",
-    project: "room-project"
+    project: "room-project",
     roomId: "room-id",   // (optional) for custom room id
     roomName: "room-name",   // (optional) for custom room name
 }
@@ -33,7 +33,7 @@ start meeting (no waiting)
 ```javascript
 const message = {
     id: "startMeeting",
-    project: "room-project"
+    project: "room-project",
     roomId: "room-id",   // (optional) for custom room id
     roomName: "room-name",   // (optional) for custom room name
 }
