@@ -62,7 +62,18 @@ const message = {
 socket.emit("meeting", message)
 ```
 
-##### 6. acceptCall
+##### 6. rejoinRoom
+join meeting re-room
+```javascript
+const message = {
+    id: "rejoinRoom",
+    roomId: "room-id",
+    project: "room-project"
+}
+socket.emit("meeting", message)
+```
+
+##### 7. acceptCall
 accept incoming call
 ```javascript
 const message = {
@@ -73,7 +84,7 @@ const message = {
 socket.emit("meeting", message)
 ```
 
-##### 7. rejectCall
+##### 8. rejectCall
 reject incoming call
 ```javascript
 const message = {
@@ -84,7 +95,7 @@ const message = {
 socket.emit("meeting", message)
 ```
 
-##### 8. cancelCall
+##### 9. cancelCall
 cancel (1-1) calling (from caller)
 ```javascript
 const message = {
@@ -96,7 +107,7 @@ const message = {
 socket.emit("meeting", message)
 ```
 
-##### 8. cancelGroupCall
+##### 10. cancelGroupCall
 cancel group calling (from caller)
 ```javascript
 const message = {
@@ -107,7 +118,7 @@ const message = {
 socket.emit("meeting", message)
 ```
 
-##### 9. invite
+##### 11. invite
 invite other to join room
 ```javascript
 const message = {
@@ -130,6 +141,40 @@ socket.on("meeting", msg => {
 /*  msg on joinRoomSuccess
     {
         id: "joinRoomSuccess",
+        roomId: "room-id"
+        roomName: "room-name",
+        roomType: "room-type"
+        project: "room-project",
+        members: [
+            {
+                id: "user-socket-id",
+                robotId: "1",
+                videoId: "0",
+                name: "member 01",
+                username: "member01"
+            },
+            {
+                id: "user-socket-id",
+                robotId: "2",
+                videoId: "0",
+                name: "member 02",
+                username: "member02"
+            }
+        ]
+    }
+/*
+})
+```
+
+##### rejoinRoomSuccess
+event on join re-room success
+
+```javascript
+socket.on("meeting", msg => {
+    console.log(msg)
+/*  msg on rejoinRoomSuccess
+    {
+        id: "rejoinRoomSuccess",
         roomId: "room-id"
         roomName: "room-name",
         roomType: "room-type"
