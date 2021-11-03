@@ -1,4 +1,4 @@
-# Socket Meeting Document(v1)
+# Socket Meeting Document(V1)
 
 ## Actions
 
